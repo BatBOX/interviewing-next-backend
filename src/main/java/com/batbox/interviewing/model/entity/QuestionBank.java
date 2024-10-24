@@ -25,12 +25,12 @@ public class QuestionBank implements Serializable {
     private String title;
 
     /**
-     * 
+     * 描述
      */
     private String description;
 
     /**
-     * 
+     * 图片
      */
     private String picture;
 

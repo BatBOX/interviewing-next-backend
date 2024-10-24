@@ -1,6 +1,5 @@
 package com.batbox.interviewing.model.vo;
 
-import cn.hutool.json.JSONUtil;
 import com.batbox.interviewing.model.entity.QuestionBankQuestion;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -23,14 +22,14 @@ public class QuestionBankQuestionVO implements Serializable {
     private Long id;
 
     /**
-     * 标题
+     * 题库id
      */
-    private String title;
+    private Long questionBankId;
 
     /**
-     * 内容
+     * 题目id
      */
-    private String content;
+    private Long questionId;
 
     /**
      * 创建用户 id
@@ -69,8 +68,6 @@ public class QuestionBankQuestionVO implements Serializable {
         }
         QuestionBankQuestion questionBankQuestion = new QuestionBankQuestion();
         BeanUtils.copyProperties(questionBankQuestionVO, questionBankQuestion);
-        List<String> tagList = questionBankQuestionVO.getTagList();
-        questionBankQuestion.setTags(JSONUtil.toJsonStr(tagList));
         return questionBankQuestion;
     }
 
@@ -86,7 +83,6 @@ public class QuestionBankQuestionVO implements Serializable {
         }
         QuestionBankQuestionVO questionBankQuestionVO = new QuestionBankQuestionVO();
         BeanUtils.copyProperties(questionBankQuestion, questionBankQuestionVO);
-        questionBankQuestionVO.setTagList(JSONUtil.toList(questionBankQuestion.getTags(), String.class));
         return questionBankQuestionVO;
     }
 }
